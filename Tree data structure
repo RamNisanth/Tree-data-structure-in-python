@@ -1,0 +1,48 @@
+class Tree:
+  def __init__(self,data):
+    self.data=data
+    self.children=[]
+    self.parent=None
+  def add_child(self,child):
+    child.parent=self
+    self.children.append(child)
+  def print_children(self):
+    for i in self.children:
+      print("      |--",i.data)    
+  def print_childrens_children(self):
+    print(self.data)
+    for i in self.children:
+      print("    |--",i.data)
+      i.print_children()      
+def build_product_tree():
+  root=Tree("electronics")
+  laptop = Tree("laptops")
+  root.add_child(laptop)
+  phone=Tree("phones")
+  root.add_child(phone)
+  trimmer=Tree("Trimmer")
+  root.add_child(trimmer)
+  iphone=Tree("Iphone")
+  phone.add_child(iphone)
+  redme=Tree("redme")
+  phone.add_child(redme)
+  oppo=Tree("Oppo")
+  phone.add_child(oppo)
+  dell=Tree("Dell")
+  laptop.add_child(dell)
+  apple=Tree("macBook")
+  laptop.add_child(apple)
+  hp=Tree("HP")
+  laptop.add_child(hp)
+  phillips=Tree("Phillips")
+  trimmer.add_child(phillips)
+  zova=Tree("Zova")
+  trimmer.add_child(zova)
+  sony=Tree("Sony")
+  trimmer.add_child(sony)
+  
+  #root.print_children()
+  root.print_childrens_children()
+
+if __name__=="__main__":
+  build_product_tree() 
